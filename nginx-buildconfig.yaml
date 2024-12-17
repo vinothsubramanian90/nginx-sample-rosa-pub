@@ -1,0 +1,18 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: nginx-sample
+spec:
+  source:
+    git:
+      uri: https://github.com/vinothsubramanian90/nginx-sample-rosa.git
+      ref: master
+    secrets:
+    - secret:
+        secretName: github-token
+  strategy:
+    dockerStrategy: {}
+  output:
+    to:
+      kind: ImageStreamTag
+      name: nginx-sample:latest

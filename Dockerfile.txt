@@ -1,0 +1,15 @@
+# Start with the official NGINX image
+FROM nginx:1.25-alpine
+
+# Set environment variables for OpenShift non-root support
+USER 1001
+EXPOSE 8081
+
+# Copy custom NGINX configuration
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Add your static files (replace 'html' folder as needed)
+COPY ./html /usr/share/nginx/html
+
+# Set default command
+CMD ["nginx", "-g", "daemon off;"]
