@@ -6,7 +6,7 @@ USER root
 
 # Create necessary directories and adjust permissions for the non-root user (1001)
 RUN mkdir -p /var/cache/nginx/{client_temp,proxy_temp,fastcgi_temp} \
-    && chown -R 1001:1001 /var/cache/nginx
+    && chown -R nginx:nginx /var/cache/nginx
 
 # Remove default.conf to avoid conflicts if custom configs are provided
 RUN rm -f /etc/nginx/conf.d/default.conf
